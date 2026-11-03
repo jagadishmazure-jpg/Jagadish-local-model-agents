@@ -20,7 +20,7 @@ claim, and the test suite asserts it.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 from local_model_agents.approvals import Approval, ApprovalGate
 from local_model_agents.audit import AuditLog
@@ -94,7 +94,6 @@ class LocalAgentPipeline:
         audit.append("fallback", "pipeline", {"mode": outcome.mode})
 
         needs_approval = risky or result.confidence < self.threshold
-        blocked = False
         reason = outcome.reason
         if needs_approval:
             ok = self.gate.consume(approval, approver or "", scope="act")
@@ -104,7 +103,6 @@ class LocalAgentPipeline:
                 {"needs_approval": True, "approved": ok},
             )
             if not ok:
-                blocked = True
                 reason = (
                     "Blocked by human gate: risky or low-confidence output "
                     "requires a valid named-person approval."
