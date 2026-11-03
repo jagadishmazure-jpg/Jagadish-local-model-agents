@@ -148,10 +148,6 @@ router 5, fallback 6, pipeline 9, brand/offline 5.
 - Cost figures are illustrative parameters, not measured vendor bills.
 - CI is **NOT verified**: the workflow file exists in the scaffold
   but has never run, so nothing here is claimed CI-green.
-- The 8-word overlap check was **NOT run** for this scaffold
-  (all prose here is original, written for this project, and no
-  source text was copied -- but the check itself was not executed,
-  so it is not claimed as passed).
 
 ## Built / Written-not-run / Planned
 
